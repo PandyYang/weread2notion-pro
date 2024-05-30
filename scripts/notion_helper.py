@@ -127,7 +127,7 @@ class NotionHelper:
 
     def update_book_database(self):
         """更新数据库"""
-        print("book_database_id---------------" + self.book_database_id)
+        print("book_database_id---------------" + str(self.book_database_id))
         response = self.client.databases.retrieve(database_id=self.book_database_id)
         id = response.get("id")
         properties = response.get("properties")

@@ -46,11 +46,13 @@ class NotionHelper:
     database_id_dict = {}
     heatmap_block_id = None
 
+    print("------------------------------")
+
     def __init__(self):
         self.client = Client(auth=os.getenv("NOTION_TOKEN"), log_level=logging.ERROR)
         self.__cache = {}
         self.page_id = self.extract_page_id(os.getenv("NOTION_PAGE"))
-        logging.log("page_id................." + self.page_id)
+        print("page_id................." + self.page_id)
         self.search_database(self.page_id)
         for key in self.database_name_dict.keys():
             if os.getenv(key) != None and os.getenv(key) != "":

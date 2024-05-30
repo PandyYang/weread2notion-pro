@@ -54,9 +54,11 @@ class NotionHelper:
         self.page_id = self.extract_page_id(os.getenv("NOTION_PAGE"))
         print("page_id................." + self.page_id)
         self.search_database(self.page_id)
+
         for key in self.database_name_dict.keys():
             if os.getenv(key) != None and os.getenv(key) != "":
                 self.database_name_dict[key] = os.getenv(key)
+
         self.book_database_id = self.database_id_dict.get(
             self.database_name_dict.get("BOOK_DATABASE_NAME")
         )
@@ -125,6 +127,7 @@ class NotionHelper:
 
     def update_book_database(self):
         """更新数据库"""
+        print("book_database_id---------------" + self.book_database_id)
         response = self.client.databases.retrieve(database_id=self.book_database_id)
         id = response.get("id")
         properties = response.get("properties")
